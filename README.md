@@ -3,5 +3,6 @@ K-means
 
 Data mining homework.
 
-input format example: (text file)
-
+输入格式为txt文本文件，每一行为一条记录，记录的属性值通过若干空白符分隔
+输出聚类结果到out/文件夹，每一个类为一个txt文件，每一行为一条记录的行号，
+最后一行为该类的记录条数。
