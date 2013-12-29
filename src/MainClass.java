@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import com.sun.xml.internal.ws.api.message.Attachment;
 
 /**
@@ -32,6 +34,8 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		try {
+			System.out.println("对\"" + FL_DATASET + "\"进行聚类。");
+			
 			//确定聚类数
 			BufferedReader in = new BufferedReader(
 					new InputStreamReader(System.in));
@@ -47,6 +51,17 @@ public class MainClass {
 			
 			loadDataset();
 			kmeans();
+
+			File path = new File(FL_CLUSTER_PATH);
+			if (path.exists()) {
+				File[] files = path.listFiles();
+				for (int i=0; i<files.length; i++) {
+					files[i].delete();
+				}
+			}
+			else {
+				path.mkdir();
+			}
 			
 			//把聚类结果写入文件
 			for (int i=0; i<clusterNum; i++) {			
@@ -71,6 +86,7 @@ public class MainClass {
 				writer.append(count + "");
 				writer.close();
 			}
+			System.out.println("聚类结果已输出到\"" + FL_CLUSTER_PATH + "\"路径。");
 		}
 		catch (IOException e) {
 			System.err.println(e);
