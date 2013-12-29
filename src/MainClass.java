@@ -71,6 +71,8 @@ public class MainClass {
 				for (int j=0; j<cluster.length; j++) {
 					if (cluster[j] == i) {
 						count++;
+						
+						//输出与地点编号对应的地点名称 （若无对应文件可以注释）
 						String matchPair = "";				
 						BufferedReader reader = new BufferedReader(
 								new FileReader(new File(FL_PARA)));
@@ -81,6 +83,7 @@ public class MainClass {
 						
 						writer.append(j + " " + matchPair);
 						writer.append("\n");
+						//[~]输出与地点编号对应的地点名称 （若无对应文件可以注释）
 					}
 				}
 				writer.append(count + "");
